@@ -25,23 +25,26 @@ public partial class MainWindow : Window
     {
         try
         {
-            double x = Convert.ToDouble(XInput.Text);
+            double sx = Convert.ToDouble(XStartInput.Text);
+            double ex = Convert.ToDouble(XEndInput.Text);
             int n = Convert.ToInt32(NInput.Text);
+            double step = Convert.ToDouble(StepInput.Text);
 
-            if(Math.Abs(x) > 3 * Math.PI) 
+            if(Math.Abs(sx) > 3 * Math.PI && Math.Abs(ex) > 3 * Math.PI) 
             {
                 MessageBox.Show("Invalid x range");
                 return;
             }
 
-            var resultIterative = ComponentClass.CalculateIterativly(x, n);
-            double sum = 0;
-            var resultRec = ComponentClass.CalculateRec(x, n, ref sum);
+            for (double i = sx; i <= ex; i += step)
+            {
+                var resultIterative = ComponentClass.CalculateIterativly(i, n);
+                double sum = 0;
+                var resultRec = ComponentClass.CalculateRec(i, n, ref sum);
+                var actual = Math.Exp(i);
 
-            MessageBox.Show(
-                $"Iterative: {resultIterative}\n" +
-                $"Recursive: {resultRec}\n" +
-                $"Math.Exp(x): {Math.Exp(x)}");
+                Output.Items.Add($"x: {i}; iterative: {resultIterative}; recursive: {resultRec}; Math.Exp: {actual};");
+            }
         }
         catch (Exception)
         {

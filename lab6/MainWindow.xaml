@@ -12,19 +12,25 @@
             <ColumnDefinition Width="397*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="373*"/>
+            <RowDefinition Height="130*"/>
+            <RowDefinition Height="243*"/>
             <RowDefinition Height="61*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-        <StackPanel Orientation="Vertical" Grid.ColumnSpan="1" >
-            <Label Content="X"></Label>
-            <TextBox x:Name="XInput"></TextBox>
+        <Grid Grid.RowSpan="3" Grid.ColumnSpan="2"/>
+        <StackPanel Orientation="Vertical" Grid.ColumnSpan="1" Grid.RowSpan="2" >
+            <Label Content="Start X"></Label>
+            <TextBox x:Name="XStartInput"></TextBox>
+            <Label Content="End X"/>
+            <TextBox x:Name="XEndInput"/>
         </StackPanel>
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Grid.ColumnSpan="2">
+        <ListBox x:Name="Output" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Grid.RowSpan="2">
             <Label Content="N"></Label>
             <TextBox x:Name="NInput"></TextBox>
+            <Label Content="Step"/>
+            <TextBox x:Name="StepInput"/>
         </StackPanel>
-        <Button x:Name="Calculate" FontSize="24px" Content="Calculate" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Click="Calculate_Click"></Button>
+        <Button x:Name="Calculate" FontSize="24px" Content="Calculate" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Click="Calculate_Click" Margin="0,6,0,0"/>
 
     </Grid>
 </Window>
